@@ -1,15 +1,19 @@
-<x-app-layout>
-    <div class="mb-6">
-        <h2 class="text-2xl font-bold text-gray-800">Activity Logs</h2>
-        <p class="text-gray-600">Monitor system activities and events.</p>
-    </div>
+@extends('layouts.super_admin.app')
 
-    <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6">
-        <div class="text-center py-10 text-gray-500">
-            <svg class="w-16 h-16 mx-auto mb-4 text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
-            </svg>
-            <p>No recent activity recorded.</p>
+@section('content')
+    <div class="card border-0 shadow-sm mb-4">
+        <div class="card-body p-4">
+            <h4 class="fw-bold text-dark mb-1">Activity Logs</h4>
+            <p class="text-secondary mb-0">Monitor system activities and events.</p>
         </div>
     </div>
-</x-app-layout>
+
+    <div class="card border-0 shadow-sm" style="min-height: 400px;">
+        <div class="card-body d-flex flex-column align-items-center justify-content-center text-center">
+            <div class="text-secondary opacity-50 mb-3">
+                <i class="bi bi-clipboard-data" style="font-size: 4rem;"></i>
+            </div>
+            <h5 class="text-secondary">No recent activity recorded.</h5>
+        </div>
+    </div>
+@endsection
