@@ -1,7 +1,6 @@
-@php use Illuminate\Support\Facades\Vite; @endphp
 <x-guest-layout>
     <div class="text-center mb-4">
-        <img src="{{ Vite::asset('resources/images/LogoPawTala.png') }}" alt="Logo" class="img-fluid" style="max-height: 150px;">
+        <img src="{{ asset('images/LogoPawTala.png') }}" alt="Logo" class="img-fluid" style="max-height: 150px;">
     </div>
 
     <!-- Session Status -->
