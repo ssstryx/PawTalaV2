@@ -14,6 +14,16 @@
             font-family: 'Figtree', sans-serif;
             overflow-x: hidden;
         }
+        /* Custom class for the new button color */
+        .btn-custom-color {
+            background-color: #E59500;
+            border-color: #E59500;
+            color: #fff; /* Ensure text is white for contrast */
+        }
+        .btn-custom-color:hover {
+            background-color: #d18700; /* Slightly darker on hover */
+            border-color: #d18700;
+        }
 
         /* --- SIDEBAR --- */
         .sidebar {

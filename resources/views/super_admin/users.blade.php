@@ -13,7 +13,7 @@
             <h3 class="fw-bold text-dark mb-1">User Management</h3>
             <p class="text-secondary mb-0">Manage access for Barangay Admins.</p>
         </div>
-        <button class="btn btn-primary px-4 py-2 fw-medium" data-bs-toggle="modal" data-bs-target="#addNewAdminModal">
+        <button class="btn btn-custom-color px-4 py-2 fw-medium" data-bs-toggle="modal" data-bs-target="#addNewAdminModal">
             <i class="bi bi-plus-lg me-1"></i> Add New Admin
         </button>
     </div>
@@ -56,7 +56,7 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="submit" class="btn btn-primary">Create Admin</button>
+              <button type="submit" class="btn btn-custom-color">Create Admin</button>
             </div>
           </form>
         </div>
@@ -121,7 +121,7 @@
                                     <form action="{{ route('super.toggle_status', $user) }}" method="POST" class="d-inline">
                                         @csrf
                                         @method('PATCH')
-                                        <button type="submit" class="btn btn-sm btn-{{ $user->is_active ? 'danger' : 'success' }} btn-fixed-width">
+                                        <button type="submit" class="btn btn-sm btn-{{ $user->is_active ? 'danger' : 'custom-color' }} btn-fixed-width">
                                             {{ $user->is_active ? 'Deactivate' : 'Activate' }}
                                         </button>
                                     </form>

@@ -40,6 +40,15 @@
                 font-size: 2.5rem;
                 color: #333;
             }
+            .btn-custom-color {
+                background-color: #E59500;
+                border-color: #E59500;
+                color: #fff; /* Ensure text is white for contrast */
+            }
+            .btn-custom-color:hover {
+                background-color: #d18700; /* Slightly darker on hover */
+                border-color: #d18700;
+            }
         </style>
 
         <!-- Scripts -->
