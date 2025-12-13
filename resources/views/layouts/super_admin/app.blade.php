@@ -10,7 +10,7 @@
 
     <style>
         body {
-            background-color: #f3f4f6; /* Light Gray Background */
+            background-color: #FAEBCF; /* Custom background color */
             font-family: 'Figtree', sans-serif;
             overflow-x: hidden;
         }
