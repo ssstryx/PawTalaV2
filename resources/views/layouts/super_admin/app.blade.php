@@ -60,7 +60,7 @@
             font-size: 1.5rem; /* Increased font size */
             letter-spacing: 0.05em;
             text-transform: uppercase;
-            border-bottom: 1px solid rgba(255,255,255,0.2);
+            border-bottom: 1px solid #c78300; /* Solid darker shade of E59500 */
             justify-content: space-between;
             padding-right: 15px;
         }
@@ -81,13 +81,13 @@
         }
         
         .sidebar-brand .btn {
-            background-color: transparent; /* Transparent background for the button */
+            background-color: #E59500; /* Same as sidebar background */
             border: none;
         }
 
         /* Links */
         .nav-link {
-            color: rgba(255,255,255,0.8); /* Lighter text for contrast */
+            color: white; /* Changed to solid white */
             padding: 12px 24px;
             font-weight: 600; /* Bolder font */
             display: flex;
@@ -103,12 +103,12 @@
 
         .nav-link:hover {
             color: white;
-            background-color: rgba(0,0,0,0.1);
+            background-color: #c78300; /* Darker shade of E59500 on hover */
         }
 
         /* Active State (The Blue Box) */
         .nav-link.active {
-            background-color: rgba(0,0,0,0.2); /* Darker shade for active */
+            background-color: #d18700; /* Even darker shade for active */
             color: white;
             border-radius: 0; /* Remove border-radius */
             margin-right: 0;
