@@ -8,10 +8,15 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
 
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
+
     <style>
         body {
             background-color: #FAEBCF; /* Custom background color */
-            font-family: 'Figtree', sans-serif;
+            font-family: 'Nunito', sans-serif; /* New global font */
             overflow-x: hidden;
         }
         /* Custom class for the new button color */
@@ -28,7 +33,7 @@
         /* --- SIDEBAR --- */
         .sidebar {
             width: 260px;
-            background-color: #0f172a; /* YOUR EXACT DARK NAVY COLOR */
+            background-color: #E59500; /* New sidebar color */
             min-height: 100vh;
             position: fixed;
             top: 0;
@@ -51,11 +56,11 @@
             align-items: center; /* Ensure vertical centering */
             padding-left: 24px;
             color: white;
-            font-weight: 800;
-            font-size: 1.25rem;
+            font-family: 'Fredoka One', cursive; /* New font for the brand */
+            font-size: 1.5rem; /* Increased font size */
             letter-spacing: 0.05em;
             text-transform: uppercase;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
+            border-bottom: 1px solid rgba(255,255,255,0.2);
             justify-content: space-between;
             padding-right: 15px;
         }
@@ -76,15 +81,15 @@
         }
         
         .sidebar-brand .btn {
-            background-color: #0f172a; /* Same as sidebar background */
+            background-color: transparent; /* Transparent background for the button */
             border: none;
         }
 
         /* Links */
         .nav-link {
-            color: #94a3b8; /* Muted Text */
+            color: rgba(255,255,255,0.8); /* Lighter text for contrast */
             padding: 12px 24px;
-            font-weight: 500;
+            font-weight: 600; /* Bolder font */
             display: flex;
             align-items: center;
             border-left: 4px solid transparent; /* Marker line */
@@ -98,23 +103,23 @@
 
         .nav-link:hover {
             color: white;
-            background-color: rgba(255,255,255,0.05);
+            background-color: rgba(0,0,0,0.1);
         }
 
         /* Active State (The Blue Box) */
         .nav-link.active {
-            background-color: #2563eb; /* PRIMARY BLUE */
+            background-color: rgba(0,0,0,0.2); /* Darker shade for active */
             color: white;
-            border-radius: 0 25px 25px 0; /* Rounded right edge like your design */
-            margin-right: 15px;
-            border-left: 4px solid #60a5fa;
+            border-radius: 0; /* Remove border-radius */
+            margin-right: 0;
+            border-left: 4px solid white;
         }
         
         .sidebar.collapsed .nav-link.active {
-            margin-right: 0; /* Remove margin when collapsed */
-            border-radius: 0; /* Remove border-radius when collapsed */
+            margin-right: 0;
+            border-radius: 0;
         }
-
+        
         .nav-link i {
             margin-right: 12px;
             font-size: 1.1rem;

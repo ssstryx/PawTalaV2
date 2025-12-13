@@ -121,7 +121,7 @@
                                     <form action="{{ route('super.toggle_status', $user) }}" method="POST" class="d-inline">
                                         @csrf
                                         @method('PATCH')
-                                        <button type="submit" class="btn btn-sm btn-{{ $user->is_active ? 'danger' : 'custom-color' }} btn-fixed-width">
+                                        <button type="submit" class="btn btn-sm btn-{{ $user->is_active ? 'danger' : 'success' }} btn-fixed-width">
                                             {{ $user->is_active ? 'Deactivate' : 'Activate' }}
                                         </button>
                                     </form>

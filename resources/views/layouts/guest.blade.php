@@ -12,7 +12,7 @@
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
 
         <!-- Bootstrap CSS -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -23,6 +23,7 @@
         <style>
             body {
                 background-color: #FAEBCF; /* Custom background color */
+                font-family: 'Nunito', sans-serif; /* New global font */
             }
             .logo-container {
                 position: relative;
@@ -48,6 +49,12 @@
             .btn-custom-color:hover {
                 background-color: #d18700; /* Slightly darker on hover */
                 border-color: #d18700;
+            }
+            .forgot-password-link {
+                color: #6c4c2c; /* Dark brown color */
+            }
+            .forgot-password-link:hover {
+                color: #4a341e; /* Slightly darker on hover */
             }
         </style>
 
