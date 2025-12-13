@@ -1,59 +1,166 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title', 'Super Admin Dashboard')</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-    @stack('styles')
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ config('app.name', 'Pawtala') }}</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+
+    <style>
+        body {
+            background-color: #f3f4f6; /* Light Gray Background */
+            font-family: 'Figtree', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* --- SIDEBAR --- */
+        .sidebar {
+            width: 260px;
+            background-color: #0f172a; /* YOUR EXACT DARK NAVY COLOR */
+            min-height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            transition: all 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .sidebar.collapsed {
+            margin-left: -260px;
+        }
+
+        /* Sidebar Logo Area */
+        .sidebar-brand {
+            height: 64px;
+            display: flex;
+            align-items: center;
+            padding-left: 24px;
+            color: white;
+            font-weight: 800;
+            font-size: 1.25rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            justify-content: space-between; /* Add this for spacing */
+            padding-right: 15px; /* Add some padding on the right */
+        }
+
+        /* Links */
+        .nav-link {
+            color: #94a3b8; /* Muted Text */
+            padding: 12px 24px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            border-left: 4px solid transparent; /* Marker line */
+            transition: all 0.2s;
+        }
+
+        .nav-link:hover {
+            color: white;
+            background-color: rgba(255,255,255,0.05);
+        }
+
+        /* Active State (The Blue Box) */
+        .nav-link.active {
+            background-color: #2563eb; /* PRIMARY BLUE */
+            color: white;
+            border-radius: 0 25px 25px 0; /* Rounded right edge like your design */
+            margin-right: 15px;
+            border-left: 4px solid #60a5fa;
+        }
+
+        .nav-link i {
+            margin-right: 12px;
+            font-size: 1.1rem;
+        }
+
+        /* --- MAIN CONTENT WRAPPER --- */
+        .main-content {
+            margin-left: 260px; /* Pushes content right so it doesn't overlap */
+            width: calc(100% - 260px);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s;
+        }
+        
+        .main-content.collapsed {
+            margin-left: 0;
+            width: 100%;
+        }
+
+        /* Header */
+        .top-navbar {
+            height: 64px;
+            background: white;
+            border-bottom: 1px solid #e5e7eb;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end; /* Changed to flex-end as button is removed */
+            padding: 0 30px;
+        }
+    </style>
 </head>
 <body>
-    <div class="d-flex" id="wrapper">
-        <!-- Sidebar -->
-        <div class="bg-dark border-right" id="sidebar-wrapper">
-            <div class="sidebar-heading text-center py-4 primary-text fs-4 fw-bold text-uppercase border-bottom">
-                <i class="fas fa-user-secret me-2"></i>PawTala
-            </div>
-            <div class="list-group list-group-flush my-3">
-                <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
-                    <i class="fas fa-tachometer-alt me-2"></i>Activity Logs
-                </a>
-                <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
-                    <i class="fas fa-users me-2"></i>User Management
-                </a>
-                <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
-                    <i class="fas fa-chart-line me-2"></i>Reports
-                </a>
-            </div>
+
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-brand">
+            PAWTALA
+            <button class="btn btn-light btn-sm" id="toggleSidebar"><i class="bi bi-list fs-4 text-dark"></i></button>
         </div>
-        <!-- /#sidebar-wrapper -->
+        
+        <div class="d-flex flex-column py-4">
+            <a href="{{ route('super.activity-logs') }}" class="nav-link {{ request()->routeIs('super.activity-logs') ? 'active' : '' }}">
+                <i class="bi bi-clock-history"></i> Activity Logs
+            </a>
+            
+            <a href="{{ route('super.users') }}" class="nav-link {{ request()->routeIs('super.users') ? 'active' : '' }}">
+                <i class="bi bi-people-fill"></i> User Management
+            </a>
+            
+            <a href="#" class="nav-link">
+                <i class="bi bi-bar-chart-line"></i> Reports
+            </a>
+        </div>
+    </nav>
 
-        <!-- Page Content -->
-        <div id="page-content-wrapper">
-            <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4">
-                <div class="d-flex align-items-center">
-                    <i class="fas fa-align-left primary-text fs-4 me-3" id="menu-toggle"></i>
-                    <h2 class="fs-2 m-0">@yield('page-title', 'Dashboard')</h2>
-                </div>
-            </nav>
-
-            <div class="container-fluid px-4">
-                @yield('content')
+    <div class="main-content">
+        
+        <header class="top-navbar">
+            
+            <div class="dropdown">
+                <a href="#" class="d-flex align-items-center text-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown">
+                    <span class="fw-bold me-2">{{ Auth::user()->name }}</span>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end border-0 shadow mt-2">
+                    <li><a class="dropdown-item" href="{{ route('profile.edit') }}">Profile</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li>
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+                            <button class="dropdown-item text-danger">Log Out</button>
+                        </form>
+                    </li>
+                </ul>
             </div>
+        </header>
+
+        <div class="p-4">
+            @yield('content')
         </div>
     </div>
-    <!-- /#page-content-wrapper -->
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        var el = document.getElementById("wrapper");
-        var toggleButton = document.getElementById("menu-toggle");
-
-        toggleButton.onclick = function () {
-            el.classList.toggle("toggled");
-        };
+        document.getElementById('toggleSidebar').addEventListener('click', function() {
+            document.getElementById('sidebar').classList.toggle('collapsed');
+            document.querySelector('.main-content').classList.toggle('collapsed');
+        });
     </script>
-    @stack('scripts')
 </body>
 </html>
