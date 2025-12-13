@@ -38,7 +38,7 @@
         .sidebar-brand {
             height: 64px;
             display: flex;
-            align-items: center;
+            align-items: center; /* Ensure vertical centering */
             padding-left: 24px;
             color: white;
             font-weight: 800;
@@ -46,17 +46,23 @@
             letter-spacing: 0.05em;
             text-transform: uppercase;
             border-bottom: 1px solid rgba(255,255,255,0.1);
-            justify-content: space-between; /* Add this for spacing */
-            padding-right: 15px; /* Add some padding on the right */
+            justify-content: space-between;
+            padding-right: 15px;
         }
         
         .sidebar.collapsed .sidebar-brand {
-            padding-left: 0; /* Remove padding when collapsed */
-            justify-content: center; /* Center content when collapsed */
+            padding-left: 0;
+            padding-right: 0; /* Remove padding */
+            justify-content: center; /* Center content horizontally */
+            align-items: center; /* Center content vertically */
         }
         
         .sidebar.collapsed .sidebar-brand span {
-            display: none; /* Hide 'Pawtala' text */
+            display: none;
+        }
+        
+        .sidebar.collapsed .sidebar-brand .btn {
+            padding: 0; /* Remove button padding to let brand handle it */
         }
         
         .sidebar-brand .btn {
