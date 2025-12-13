@@ -19,8 +19,8 @@ class SuperAdminController extends Controller
     // Tab 2: User Management (Where the form goes)
     public function userManagement()
     {
-        $admins = User::where('role', 'admin')->get();
-        return view('super_admin.users', compact('admins'));
+        $users = User::where('role', 'admin')->get();
+        return view('super_admin.users', compact('users'));
     }
 
     // Logic to add a new Barangay Admin
