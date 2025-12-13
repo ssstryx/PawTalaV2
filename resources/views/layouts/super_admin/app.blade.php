@@ -33,7 +33,7 @@
         /* --- SIDEBAR --- */
         .sidebar {
             width: 260px;
-            background-color: #E59500; /* New sidebar color */
+            background-color: #FAEBCF; /* New sidebar color matches body background */
             min-height: 100vh;
             position: fixed;
             top: 0;
@@ -55,12 +55,12 @@
             display: flex;
             align-items: center; /* Ensure vertical centering */
             padding-left: 24px;
-            color: white;
+            color: #333; /* Dark text for contrast */
             font-family: 'Fredoka One', cursive; /* New font for the brand */
             font-size: 1.5rem; /* Increased font size */
             letter-spacing: 0.05em;
             text-transform: uppercase;
-            border-bottom: 1px solid #c78300; /* Solid darker shade of E59500 */
+            border-bottom: 1px solid #d1c7ad; /* Darker shade of background */
             justify-content: space-between;
             padding-right: 15px;
         }
@@ -81,13 +81,16 @@
         }
         
         .sidebar-brand .btn {
-            background-color: #E59500; /* Same as sidebar background */
+            background-color: transparent; /* Transparent background for the button */
             border: none;
+        }
+        .sidebar-brand .btn i { /* Targeting the icon within the button */
+            color: #333 !important; /* Dark color for the icon */
         }
 
         /* Links */
         .nav-link {
-            color: white; /* Changed to solid white */
+            color: #333; /* Dark text for contrast */
             padding: 12px 24px;
             font-weight: 600; /* Bolder font */
             display: flex;
@@ -102,17 +105,17 @@
         }
 
         .nav-link:hover {
-            color: white;
-            background-color: #c78300; /* Darker shade of E59500 on hover */
+            color: #333;
+            background-color: #e8e0c8; /* Darker shade of background on hover */
         }
 
         /* Active State (The Blue Box) */
         .nav-link.active {
-            background-color: #d18700; /* Even darker shade for active */
-            color: white;
+            background-color: #d6ccb2; /* Even darker shade for active */
+            color: #333;
             border-radius: 0; /* Remove border-radius */
             margin-right: 0;
-            border-left: 4px solid white;
+            border-left: 4px solid #333; /* Dark border for active */
         }
         
         .sidebar.collapsed .nav-link.active {
@@ -123,6 +126,7 @@
         .nav-link i {
             margin-right: 12px;
             font-size: 1.1rem;
+            color: #333; /* Dark color for icons */
         }
         
         .sidebar.collapsed .nav-link i {
