@@ -23,13 +23,13 @@
             }
             .logo-container {
                 position: relative;
-                z-index: 1;
             }
             .logo-overlay {
                 position: absolute;
-                top: -75px; /* Adjust this value to control overlap */
+                top: -100px; /* Adjust this value to control overlap */
                 left: 50%;
                 transform: translateX(-50%);
+                z-index: 2; /* Ensure logo is on top */
             }
         </style>
 
@@ -41,7 +41,7 @@
             <div class="w-100 logo-container" style="max-width: 28rem;">
                 <div class="logo-overlay">
                     <a href="/">
-                        <img src="{{ asset('images/LogoPawTala.png') }}" alt="Logo" class="img-fluid" style="max-height: 150px;">
+                        <img src="{{ asset('images/LogoPawTala.png') }}" alt="Logo" class="img-fluid" style="max-height: 200px;">
                     </a>
                 </div>
                 <div class="card shadow-sm mt-4">
