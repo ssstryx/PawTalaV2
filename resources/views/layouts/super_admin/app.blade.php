@@ -30,7 +30,8 @@
         }
         
         .sidebar.collapsed {
-            margin-left: -260px;
+            width: 70px; /* Smaller width when collapsed */
+            overflow: hidden; /* Hide text */
         }
 
         /* Sidebar Logo Area */
@@ -48,6 +49,20 @@
             justify-content: space-between; /* Add this for spacing */
             padding-right: 15px; /* Add some padding on the right */
         }
+        
+        .sidebar.collapsed .sidebar-brand {
+            padding-left: 0; /* Remove padding when collapsed */
+            justify-content: center; /* Center content when collapsed */
+        }
+        
+        .sidebar.collapsed .sidebar-brand span {
+            display: none; /* Hide 'Pawtala' text */
+        }
+        
+        .sidebar-brand .btn {
+            background-color: #0f172a; /* Same as sidebar background */
+            border: none;
+        }
 
         /* Links */
         .nav-link {
@@ -58,6 +73,11 @@
             align-items: center;
             border-left: 4px solid transparent; /* Marker line */
             transition: all 0.2s;
+        }
+        
+        .sidebar.collapsed .nav-link {
+            padding: 12px 0; /* Adjust padding for icon only */
+            justify-content: center; /* Center icon */
         }
 
         .nav-link:hover {
@@ -73,10 +93,23 @@
             margin-right: 15px;
             border-left: 4px solid #60a5fa;
         }
+        
+        .sidebar.collapsed .nav-link.active {
+            margin-right: 0; /* Remove margin when collapsed */
+            border-radius: 0; /* Remove border-radius when collapsed */
+        }
 
         .nav-link i {
             margin-right: 12px;
             font-size: 1.1rem;
+        }
+        
+        .sidebar.collapsed .nav-link i {
+            margin-right: 0; /* Remove margin when collapsed */
+        }
+        
+        .sidebar.collapsed .nav-link span {
+            display: none; /* Hide text */
         }
 
         /* --- MAIN CONTENT WRAPPER --- */
@@ -90,8 +123,8 @@
         }
         
         .main-content.collapsed {
-            margin-left: 0;
-            width: 100%;
+            margin-left: 70px; /* Adjust margin for collapsed sidebar */
+            width: calc(100% - 70px); /* Adjust width for collapsed sidebar */
         }
 
         /* Header */
@@ -110,21 +143,21 @@
 
     <nav class="sidebar" id="sidebar">
         <div class="sidebar-brand">
-            PAWTALA
-            <button class="btn btn-light btn-sm" id="toggleSidebar"><i class="bi bi-list fs-4 text-dark"></i></button>
+            <span>PAWTALA</span>
+            <button class="btn btn-dark btn-sm" id="toggleSidebar"><i class="bi bi-list fs-4 text-white"></i></button>
         </div>
         
         <div class="d-flex flex-column py-4">
             <a href="{{ route('super.activity-logs') }}" class="nav-link {{ request()->routeIs('super.activity-logs') ? 'active' : '' }}">
-                <i class="bi bi-clock-history"></i> Activity Logs
+                <i class="bi bi-clock-history"></i> <span>Activity Logs</span>
             </a>
             
             <a href="{{ route('super.users') }}" class="nav-link {{ request()->routeIs('super.users') ? 'active' : '' }}">
-                <i class="bi bi-people-fill"></i> User Management
+                <i class="bi bi-people-fill"></i> <span>User Management</span>
             </a>
             
             <a href="#" class="nav-link">
-                <i class="bi bi-bar-chart-line"></i> Reports
+                <i class="bi bi-bar-chart-line"></i> <span>Reports</span>
             </a>
         </div>
     </nav>
