@@ -1,6 +1,11 @@
 @extends('layouts.super_admin.app')
 
 @section('content')
+<style>
+    .btn-fixed-width {
+        min-width: 95px; /* Adjust this value as needed to fit the longer text */
+    }
+</style>
 <div class="container-fluid">
 
     <div class="d-flex justify-content-between align-items-center mb-4">
@@ -67,11 +72,11 @@
 
                             <td class="text-center">
                                 <div class="d-flex justify-content-center align-items-center">
-                                    <button class="btn btn-sm btn-outline-secondary me-2">Edit</button>
+                                    <button class="btn btn-sm btn-outline-secondary me-2 btn-fixed-width">Edit</button>
                                     <form action="{{ route('super.toggle_status', $user) }}" method="POST" class="d-inline">
                                         @csrf
                                         @method('PATCH')
-                                        <button type="submit" class="btn btn-sm btn-{{ $user->is_active ? 'danger' : 'success' }}">
+                                        <button type="submit" class="btn btn-sm btn-{{ $user->is_active ? 'danger' : 'success' }} btn-fixed-width">
                                             {{ $user->is_active ? 'Deactivate' : 'Activate' }}
                                         </button>
                                     </form>
