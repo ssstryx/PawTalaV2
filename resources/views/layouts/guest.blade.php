@@ -24,7 +24,7 @@
         </style>
 
         <!-- Scripts -->
-        {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="font-sans antialiased">
         <div class="min-vh-100 d-flex flex-column justify-content-center align-items-center pt-4 pb-4">
