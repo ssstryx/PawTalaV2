@@ -10,6 +10,9 @@
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
 
         <!-- Bootstrap CSS -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -23,25 +26,30 @@
             }
             .logo-container {
                 position: relative;
+
             }
             .logo-overlay {
                 position: absolute;
-                top: -100px; /* Adjust this value to control overlap */
+                top: -75px;
                 left: 50%;
                 transform: translateX(-50%);
-                z-index: 2; /* Ensure logo is on top */
+                z-index: 2; 
+            }
+            .pawtala-title {
+                font-family: 'Fredoka One', cursive;
+                font-size: 2.5rem;
+                color: #333;
             }
         </style>
 
         <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="font-sans antialiased">
         <div class="min-vh-100 d-flex flex-column justify-content-center align-items-center pt-4 pb-4">
             <div class="w-100 logo-container" style="max-width: 28rem;">
                 <div class="logo-overlay">
                     <a href="/">
-                        <img src="{{ asset('images/LogoPawTala.png') }}" alt="Logo" class="img-fluid" style="max-height: 200px;">
+                         <img src="{{ asset('images/LogoPawTala.png') }}" alt="Logo" class="image-fluid" style="width: 400px; height: auto; margin-top: -76px;">
                     </a>
                 </div>
                 <div class="card shadow-sm mt-4">

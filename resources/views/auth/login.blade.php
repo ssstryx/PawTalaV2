@@ -5,6 +5,10 @@
     <form method="POST" action="{{ route('login') }}">
         @csrf
 
+        <div class="text-center mb-4">
+            <h1 class="pawtala-title">PawTala</h1>
+        </div>
+
         <!-- Email Address -->
         <div class="mb-3">
             <label for="email" class="form-label">{{ __('Email') }}</label>
