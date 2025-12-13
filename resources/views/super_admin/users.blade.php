@@ -13,9 +13,54 @@
             <h3 class="fw-bold text-dark mb-1">User Management</h3>
             <p class="text-secondary mb-0">Manage access for Barangay Admins.</p>
         </div>
-        <button class="btn btn-primary px-4 py-2 fw-medium">
+        <button class="btn btn-primary px-4 py-2 fw-medium" data-bs-toggle="modal" data-bs-target="#addNewAdminModal">
             <i class="bi bi-plus-lg me-1"></i> Add New Admin
         </button>
+    </div>
+
+    <!-- Add New Admin Modal -->
+    <div class="modal fade" id="addNewAdminModal" tabindex="-1" aria-labelledby="addNewAdminModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="addNewAdminModalLabel">Add New Barangay Admin</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <form action="{{ route('super.create_admin') }}" method="POST">
+            @csrf
+            <div class="modal-body">
+              <div class="mb-3">
+                <label for="first_name" class="form-label">First Name</label>
+                <input type="text" class="form-control" id="first_name" name="first_name" required>
+              </div>
+              <div class="mb-3">
+                <label for="middle_name" class="form-label">Middle Name</label>
+                <input type="text" class="form-control" id="middle_name" name="middle_name">
+              </div>
+              <div class="mb-3">
+                <label for="last_name" class="form-label">Last Name</label>
+                <input type="text" class="form-control" id="last_name" name="last_name" required>
+              </div>
+              <div class="mb-3">
+                <label for="email" class="form-label">Email address</label>
+                <input type="email" class="form-control" id="email" name="email" required>
+              </div>
+              <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="password" name="password" required>
+              </div>
+              <div class="mb-3">
+                <label for="barangay" class="form-label">Barangay</label>
+                <input type="text" class="form-control" id="barangay" name="barangay" required>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary">Create Admin</button>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
 
     <div class="card border-0 shadow-sm rounded-3">
