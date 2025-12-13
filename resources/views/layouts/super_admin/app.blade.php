@@ -78,6 +78,10 @@
                 display: none;
             }
             
+            .sidebar.collapsed .sidebar-brand .fa-paw {
+                display: none; /* Hide the paw icon when collapsed */
+            }
+            
             .sidebar.collapsed .sidebar-brand .btn {
                 padding: 0; /* Remove button padding to let brand handle it */
             }
