@@ -27,7 +27,7 @@
                             <th class="text-secondary text-uppercase small fw-bold">Barangay</th>
                             <th class="text-secondary text-uppercase small fw-bold">Role</th>
                             <th class="text-secondary text-uppercase small fw-bold">Status</th>
-                            <th class="text-end pe-4 text-secondary text-uppercase small fw-bold">Actions</th>
+                            <th class="text-center text-secondary text-uppercase small fw-bold">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -65,15 +65,17 @@
                                 @endif
                             </td>
 
-                            <td class="text-end pe-4">
-                                <button class="btn btn-sm btn-outline-secondary">Edit</button>
-                                <form action="{{ route('super.toggle_status', $user) }}" method="POST" class="d-inline">
-                                    @csrf
-                                    @method('PATCH')
-                                    <button type="submit" class="btn btn-sm btn-{{ $user->is_active ? 'danger' : 'success' }}">
-                                        {{ $user->is_active ? 'Deactivate' : 'Activate' }}
-                                    </button>
-                                </form>
+                            <td class="text-center">
+                                <div class="d-flex justify-content-center align-items-center">
+                                    <button class="btn btn-sm btn-outline-secondary me-2">Edit</button>
+                                    <form action="{{ route('super.toggle_status', $user) }}" method="POST" class="d-inline">
+                                        @csrf
+                                        @method('PATCH')
+                                        <button type="submit" class="btn btn-sm btn-{{ $user->is_active ? 'danger' : 'success' }}">
+                                            {{ $user->is_active ? 'Deactivate' : 'Activate' }}
+                                        </button>
+                                    </form>
+                                </div>
                             </td>
                         </tr>
                         @empty
