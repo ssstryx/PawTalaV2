@@ -72,7 +72,7 @@
 
                             <td class="text-center">
                                 <div class="d-flex justify-content-center align-items-center">
-                                    <button class="btn btn-sm btn-outline-secondary me-2 btn-fixed-width">Edit</button>
+                                    <button class="btn btn-sm btn-outline-secondary me-2">Edit</button>
                                     <form action="{{ route('super.toggle_status', $user) }}" method="POST" class="d-inline">
                                         @csrf
                                         @method('PATCH')
