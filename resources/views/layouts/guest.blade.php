@@ -21,6 +21,16 @@
             body {
                 background-color: #FAEBCF; /* Custom background color */
             }
+            .logo-container {
+                position: relative;
+                z-index: 1;
+            }
+            .logo-overlay {
+                position: absolute;
+                top: -75px; /* Adjust this value to control overlap */
+                left: 50%;
+                transform: translateX(-50%);
+            }
         </style>
 
         <!-- Scripts -->
@@ -28,15 +38,14 @@
     </head>
     <body class="font-sans antialiased">
         <div class="min-vh-100 d-flex flex-column justify-content-center align-items-center pt-4 pb-4">
-            <div>
-                <a href="/">
-                    {{-- <x-application-logo class="w-20 h-20 fill-current text-gray-500" /> --}}
-                </a>
-            </div>
-
-            <div class="w-100" style="max-width: 28rem;">
+            <div class="w-100 logo-container" style="max-width: 28rem;">
+                <div class="logo-overlay">
+                    <a href="/">
+                        <img src="{{ asset('images/LogoPawTala.png') }}" alt="Logo" class="img-fluid" style="max-height: 150px;">
+                    </a>
+                </div>
                 <div class="card shadow-sm mt-4">
-                    <div class="card-body p-4">
+                    <div class="card-body p-4 pt-5"> <!-- Added pt-5 to make space for the logo -->
                         {{ $slot }}
                     </div>
                 </div>
