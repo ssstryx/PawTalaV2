@@ -1,11 +1,9 @@
 @extends('layouts.super_admin.app')
 
 @section('content')
-    <div class="card border-0 shadow-sm mb-4">
-        <div class="card-body p-4">
-            <h4 class="fw-bold text-dark mb-1">Activity Logs</h4>
-            <p class="text-secondary mb-0">Monitor system activities and events.</p>
-        </div>
+    <div class="mb-4">
+        <h3 class="fw-bold text-dark mb-1">Activity Logs</h3>
+        <p class="text-secondary mb-0">Monitor system activities and events.</p>
     </div>
 
     <div class="card border-0 shadow-sm" style="min-height: 400px;">
