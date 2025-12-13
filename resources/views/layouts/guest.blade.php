@@ -30,18 +30,12 @@
         <div class="min-vh-100 d-flex flex-column justify-content-center align-items-center pt-4 pb-4">
             <div>
                 <a href="/">
-                    <!-- Assuming x-application-logo component is updated or removed -->
-                    <!-- For now, we'll keep it as is, but it might need refactoring -->
                     {{-- <x-application-logo class="w-20 h-20 fill-current text-gray-500" /> --}}
                 </a>
             </div>
 
             <div class="w-100" style="max-width: 28rem;">
-                <div class="card shadow-sm mt-4">
-                    <div class="card-body p-4">
-                        {{ $slot }}
-                    </div>
-                </div>
+                {{ $slot }}
             </div>
         </div>
         <!-- Bootstrap Bundle with Popper -->
