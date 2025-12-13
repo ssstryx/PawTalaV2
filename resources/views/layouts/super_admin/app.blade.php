@@ -166,14 +166,13 @@
 <body>
 
     <nav class="sidebar" id="sidebar">
-        <div class="sidebar-brand">
-            <div>
-                <span>PawTala</span>
-                <i class="bi bi-paw-fill ms-2"></i>
-            </div>
-            <button class="btn btn-dark btn-sm" id="toggleSidebar"><i class="bi bi-list fs-4 text-white"></i></button>
-        </div>
-        
+                    <div class="sidebar-brand">
+                        <div>
+                            <span>PawTala</span>
+                            <i class="bi bi-suit-heart-fill ms-2 text-white"></i>
+                        </div>
+                        <button class="btn btn-dark btn-sm" id="toggleSidebar"><i class="bi bi-list fs-4 text-white"></i></button>
+                    </div>        
         <div class="d-flex flex-column py-4">
             <a href="{{ url('/super-admin/activity-logs') }}" class="nav-link {{ request()->is('super-admin/activity-logs') ? 'active' : '' }}">
                 <i class="bi bi-clock-history"></i> <span>Activity Logs</span>
