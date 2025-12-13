@@ -59,7 +59,7 @@
                 font-family: 'Fredoka One', cursive; /* New font for the brand */
                 font-size: 1.5rem; /* Increased font size */
                 letter-spacing: 0.05em;
-                text-transform: uppercase;
+                /* text-transform: uppercase; Removed this line */
                 border-bottom: 1px solid rgba(255,255,255,0.1); /* Lighter border */
                 justify-content: space-between;
                 padding-right: 15px;
@@ -167,7 +167,10 @@
 
     <nav class="sidebar" id="sidebar">
         <div class="sidebar-brand">
-            <span>PAWTALA</span>
+            <div>
+                <span>PawTala</span>
+                <i class="bi bi-paw-fill ms-2"></i>
+            </div>
             <button class="btn btn-dark btn-sm" id="toggleSidebar"><i class="bi bi-list fs-4 text-white"></i></button>
         </div>
         
