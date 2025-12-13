@@ -154,7 +154,7 @@
         </div>
         
         <div class="d-flex flex-column py-4">
-            <a href="{{ route('super.activity-logs') }}" class="nav-link {{ request()->routeIs('super.activity-logs') ? 'active' : '' }}">
+            <a href="{{ url('/super-admin/activity-logs') }}" class="nav-link {{ request()->is('super-admin/activity-logs') ? 'active' : '' }}">
                 <i class="bi bi-clock-history"></i> <span>Activity Logs</span>
             </a>
             
