@@ -33,7 +33,7 @@
         /* --- SIDEBAR --- */
         .sidebar {
             width: 260px;
-            background-color: #8d6e63; /* New warm brown color */
+            background-color: #2c3e50; /* New dark blue color */
             min-height: 100vh;
             position: fixed;
             top: 0;
