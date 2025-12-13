@@ -35,7 +35,11 @@
             </div>
 
             <div class="w-100" style="max-width: 28rem;">
-                {{ $slot }}
+                <div class="card shadow-sm mt-4">
+                    <div class="card-body p-4">
+                        {{ $slot }}
+                    </div>
+                </div>
             </div>
         </div>
         <!-- Bootstrap Bundle with Popper -->
