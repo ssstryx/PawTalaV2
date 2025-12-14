@@ -41,11 +41,10 @@
                                                                                             <tbody>
                                                                                             @foreach ($users as $user)
                                                                                                 <tr>
-                                                                                                    <td>{{ $user->userProfile->owner_id }}</td>
-                                                                                                    <td>{{ $user->userProfile->first_name }} {{ $user->userProfile->last_name }}</td>
-                                                                                                    <td>{{ $user->email }}</td>
-                                                                                                    <td>{{ $user->userProfile->address }}</td>
-                                                                                                    <td>
+                                                                                                                                                                                                    <td>{{ $user->userProfile?->owner_id }}</td>
+                                                                                                                                                                                                    <td>{{ $user->userProfile?->first_name }} {{ $user->userProfile?->last_name }}</td>
+                                                                                                                                                                                                    <td>{{ $user->email }}</td>
+                                                                                                                                                                                                    <td>{{ $user->userProfile?->address }}</td>                                                                                                    <td>
                                                                                                         @if ($user->is_active)
                                                                                                             <span class="badge bg-success">Active</span>
                                                                                                         @else
@@ -54,12 +53,12 @@
                                                                                                     </td>
                                                                                                     <td>
                                                                                                         <a href="#" class="btn btn-sm btn-warning edit-user-btn" data-bs-id="{{ $user->id }}"
-                                                                                                            data-bs-first_name="{{ $user->userProfile->first_name }}"
-                                                                                                            data-bs-last_name="{{ $user->userProfile->last_name }}"
-                                                                                                            data-bs-middle_name="{{ $user->userProfile->middle_name ?? '' }}"
-                                                                                                            data-bs-contact_number="{{ $user->userProfile->contact_number }}"
+                                                                                                            data-bs-first_name="{{ $user->userProfile?->first_name }}"
+                                                                                                            data-bs-last_name="{{ $user->userProfile?->last_name }}"
+                                                                                                            data-bs-middle_name="{{ $user->userProfile?->middle_name ?? '' }}"
+                                                                                                            data-bs-contact_number="{{ $user->userProfile?->contact_number }}"
                                                                                                             data-bs-email="{{ $user->email }}"
-                                                                                                            data-bs-address="{{ $user->userProfile->address }}">Edit</a>
+                                                                                                            data-bs-address="{{ $user->userProfile?->address }}">Edit</a>
                                                                                                         <form action="{{ route('barangay.users.toggle_status', $user->id) }}" method="POST" class="d-inline">
                                                                                                             @csrf
                                                                                                             @method('PATCH')
