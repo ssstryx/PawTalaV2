@@ -29,6 +29,6 @@ class CustomVerificationController extends Controller
         }
 
         // 4. Redirect to Login Page
-        return redirect()->route('login')->with('success', 'Email successfully verified! You can now login.');
+        return redirect()->route('login', ['status' => 'email-verified']);
     }
 }
