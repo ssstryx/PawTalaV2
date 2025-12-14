@@ -217,7 +217,7 @@
     
                 // Update the modal's content.
                 var modalForm = editUserModal.querySelector('#editUserForm');
-                modalForm.action = `/barangay/users/${userId}`; // This route needs to be defined
+                modalForm.action = `/admin/users/${userId}`; // This route needs to be defined
                 modalForm.querySelector('#edit_first_name').value = firstName;
                 modalForm.querySelector('#edit_last_name').value = lastName;
                 modalForm.querySelector('#edit_middle_name').value = middleName;
