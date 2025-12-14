@@ -12,13 +12,14 @@ class User extends Authenticatable implements MustVerifyEmail
     use HasFactory, Notifiable;
 
     protected $fillable = [
-        'first_name',  
-        'middle_name', 
+        'name',
+        'first_name',
         'last_name',
         'email',
         'password',
-        'role',      
+        'role',
         'barangay',
+        'is_active',
     ];
 
     protected $hidden = [
@@ -31,9 +32,22 @@ class User extends Authenticatable implements MustVerifyEmail
         'password' => 'hashed',
     ];
 
-    // This allows you to still use $user->name in your views
+    public function adminProfile()
+    {
+        return $this->hasOne(AdminProfile::class);
+    }
+
+    public function userProfile()
+    {
+        return $this->hasOne(UserProfile::class);
+    }
+
     public function getNameAttribute()
     {
-        return "{$this->first_name} {$this->last_name}";
+        if ($this->role === 'admin' || $this->role === 'super_admin') {
+            return "{$this->adminProfile?->first_name} {$this->adminProfile?->last_name}";
+        } else {
+            return "{$this->userProfile?->first_name} {$this->userProfile?->last_name}";
+        }
     }
 }
