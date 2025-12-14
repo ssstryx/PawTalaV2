@@ -26,6 +26,7 @@
             <div class="card shadow mb-4">
                 <div class="card-body">
                     <div class="table-responsive">
+                    <div class="table-responsive">
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                             <thead>
                                 <tr>
@@ -52,8 +53,7 @@
                                                                                                         @endif
                                                                                                     </td>
                                                                                                     <td>
-                                                                                                        <a href="#" class="btn btn-sm btn-warning" data-bs-toggle="modal" data-bs-target="#editUserModal"
-                                                                                                            data-bs-id="{{ $user->id }}"
+                                                                                                        <a href="#" class="btn btn-sm btn-warning edit-user-btn" data-bs-id="{{ $user->id }}"
                                                                                                             data-bs-first_name="{{ $user->userProfile->first_name }}"
                                                                                                             data-bs-last_name="{{ $user->userProfile->last_name }}"
                                                                                                             data-bs-middle_name="{{ $user->userProfile->middle_name ?? '' }}"
@@ -70,6 +70,10 @@
                                                                                                             @endif
                                                                                                         </form>
                                                                                                     </td>
+                                                                                                </tr>
+                                                                                            @empty
+                                                                                                <tr>
+                                                                                                    <td colspan="6" class="text-center">No users found.</td>
                                                                                                 </tr>
                                                                                             @endforeach
                                                                                         </tbody>                        </table>
@@ -201,11 +205,12 @@
     </div>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            var editUserModal = document.getElementById('editUserModal');
-            editUserModal.addEventListener('show.bs.modal', function (event) {
-                // Button that triggered the modal
-                var button = event.relatedTarget;
-    
+            var editUserModalElement = document.getElementById('editUserModal');
+            var editUserModal = new bootstrap.Modal(editUserModalElement); // Initialize modal instance
+
+            editUserModalElement.addEventListener('show.bs.modal', function (event) {
+                var button = event.relatedTarget; // Button that triggered the modal
+
                 // Extract info from data-bs-* attributes
                 var userId = button.getAttribute('data-bs-id');
                 var firstName = button.getAttribute('data-bs-first_name');
@@ -214,10 +219,10 @@
                 var contactNumber = button.getAttribute('data-bs-contact_number');
                 var email = button.getAttribute('data-bs-email');
                 var address = button.getAttribute('data-bs-address');
-    
+
                 // Update the modal's content.
-                var modalForm = editUserModal.querySelector('#editUserForm');
-                modalForm.action = `/admin/users/${userId}`; // This route needs to be defined
+                var modalForm = editUserModalElement.querySelector('#editUserForm');
+                modalForm.action = `/admin/users/${userId}`;
                 modalForm.querySelector('#edit_first_name').value = firstName;
                 modalForm.querySelector('#edit_last_name').value = lastName;
                 modalForm.querySelector('#edit_middle_name').value = middleName;
@@ -225,6 +230,14 @@
                 modalForm.querySelector('#edit_email').value = email;
                 modalForm.querySelector('#edit_address').value = address;
             });
+
+            // Add click listener to all edit buttons
+            document.querySelectorAll('.edit-user-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    editUserModal.show(this); // Pass the clicked button as relatedTarget
+                });
+            });
         });
     </script>
     
+    @endsection
