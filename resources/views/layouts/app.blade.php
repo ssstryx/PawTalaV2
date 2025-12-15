@@ -15,7 +15,7 @@
 
         <aside :class="sidebarOpen ? 'w-64' : 'w-20'" class="bg-gray-900 text-white transition-all duration-300 ease-in-out flex flex-col fixed h-full z-30">
             <div class="h-16 flex items-center justify-center border-b border-gray-700 bg-gray-900">
-                <span :class="sidebarOpen ? 'block' : 'hidden'" class="text-xl font-bold tracking-wider">PAWTALA</span>
+                <span :class="sidebarOpen ? 'block' : 'hidden'" class="text-xl font-bold tracking-wider">PawTala</span>
                 <span :class="sidebarOpen ? 'hidden' : 'block'" class="text-xl font-bold">PT</span>
             </div>
 

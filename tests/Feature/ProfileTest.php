@@ -10,6 +10,12 @@ class ProfileTest extends TestCase
 {
     use RefreshDatabase;
 
+    protected function setUp(): void
+    {
+        parent::setUp();
+        $this->withoutMiddleware(\App\Http\Middleware\VerifyCsrfToken::class);
+    }
+
     public function test_profile_page_is_displayed(): void
     {
         $user = User::factory()->create();
@@ -28,7 +34,8 @@ class ProfileTest extends TestCase
         $response = $this
             ->actingAs($user)
             ->patch('/profile', [
-                'name' => 'Test User',
+                'first_name' => 'Test',
+                'last_name' => 'User',
                 'email' => 'test@example.com',
             ]);
 
@@ -38,7 +45,8 @@ class ProfileTest extends TestCase
 
         $user->refresh();
 
-        $this->assertSame('Test User', $user->name);
+        $this->assertSame('Test', $user->first_name);
+        $this->assertSame('User', $user->last_name);
         $this->assertSame('test@example.com', $user->email);
         $this->assertNull($user->email_verified_at);
     }
@@ -50,7 +58,8 @@ class ProfileTest extends TestCase
         $response = $this
             ->actingAs($user)
             ->patch('/profile', [
-                'name' => 'Test User',
+                'first_name' => 'Test',
+                'last_name' => 'User',
                 'email' => $user->email,
             ]);
 

@@ -12,14 +12,17 @@ class User extends Authenticatable implements MustVerifyEmail
     use HasFactory, Notifiable;
 
     protected $fillable = [
-        'name',
         'first_name',
+        'middle_name',
         'last_name',
         'email',
         'password',
         'role',
-        'barangay',
+        'contact_number',
+        'address',
+        'barangay_id', // <--- CHANGED from 'barangay' to 'barangay_id'
         'is_active',
+        'owner_id',
     ];
 
     protected $hidden = [
@@ -30,24 +33,31 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $casts = [
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
+        'is_active' => 'boolean',
     ];
-
-    public function adminProfile()
-    {
-        return $this->hasOne(AdminProfile::class);
-    }
-
-    public function userProfile()
-    {
-        return $this->hasOne(UserProfile::class);
-    }
 
     public function getNameAttribute()
     {
-        if ($this->role === 'admin' || $this->role === 'super_admin') {
-            return "{$this->adminProfile?->first_name} {$this->adminProfile?->last_name}";
-        } else {
-            return "{$this->userProfile?->first_name} {$this->userProfile?->last_name}";
-        }
+        return $this->first_name . ' ' . $this->last_name;
+    }
+
+    // Link User to Barangay
+    public function barangay()
+    {
+        return $this->belongsTo(Barangay::class);
+    }
+
+    protected static function boot()
+    {
+        parent::boot();
+        static::creating(function ($user) {
+            if ($user->role === 'user') {
+                $lastUser = User::where('role', 'user')
+                                ->whereNotNull('owner_id')
+                                ->orderByRaw('CAST(owner_id AS UNSIGNED) DESC')
+                                ->first();
+                $user->owner_id = $lastUser ? intval($lastUser->owner_id) + 1 : 1001;
+            }
+        });
     }
 }

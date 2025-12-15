@@ -6,17 +6,19 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    public function up(): void
+    public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->boolean('is_active')->default(true); // Default to Active
+            if (!Schema::hasColumn('users', 'barangay')) {
+                $table->string('barangay')->nullable()->after('role');
+            }
         });
     }
 
-    public function down(): void
+    public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('is_active');
+            $table->dropColumn('barangay');
         });
     }
 };

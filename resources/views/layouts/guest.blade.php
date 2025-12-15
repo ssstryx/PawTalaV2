@@ -65,7 +65,7 @@
             <div class="w-100 logo-container" style="max-width: 28rem;">
                 <div class="logo-overlay">
                     <a href="/">
-                         <img src="{{ asset('images/LogoPawTala.png') }}" alt="Logo" class="image-fluid" style="width: 400px; height: auto; margin-top: -76px;">
+                         <img src="{{ asset('images/LogoPawTala.png') }}" alt="Logo" class="image-fluid" style="width: 400px; height: auto; margin-top: -78px;">
                     </a>
                 </div>
                 <div class="card shadow-sm mt-4">

@@ -6,26 +6,23 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
-    public function up(): void
+    public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            // Remove the old 'name' column
+            // 1. Drop the old single 'name' column
             $table->dropColumn('name');
 
-            // Add the new specific columns
+            // 2. Add the new separated columns
             $table->string('first_name')->after('id');
             $table->string('middle_name')->nullable()->after('first_name');
             $table->string('last_name')->after('middle_name');
         });
     }
 
-    public function down(): void
+    public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('name');
+            $table->string('name')->after('id');
             $table->dropColumn(['first_name', 'middle_name', 'last_name']);
         });
     }

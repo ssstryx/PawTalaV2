@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Auth\Events\Verified;
+use Illuminate\Support\Facades\Auth;
 
 class CustomVerificationController extends Controller
 {
@@ -27,6 +28,9 @@ class CustomVerificationController extends Controller
         if ($user->markEmailAsVerified()) {
             event(new Verified($user));
         }
+
+        // Explicitly log out any currently authenticated user
+        Auth::logout();
 
         // 4. Redirect to Login Page
         return redirect()->route('login', ['status' => 'email-verified']);

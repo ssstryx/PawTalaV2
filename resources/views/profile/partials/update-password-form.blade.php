@@ -1,36 +1,58 @@
 <section>
     <header>
-        <h4 class="fw-bold">{{ __('Update Password') }}</h4>
-        <p class="text-muted">{{ __('Ensure your account is using a long, random password to stay secure.') }}</p>
+        <h2 class="h4 font-weight-bold text-dark">
+            {{ __('Update Password') }}
+        </h2>
+        <p class="text-muted small">
+            {{ __('Ensure your account is using a long, random password to stay secure.') }}
+        </p>
     </header>
 
     <form method="post" action="{{ route('password.update') }}" class="mt-4">
         @csrf
         @method('put')
 
+        {{-- Current Password --}}
         <div class="mb-3">
-            <label for="update_password_current_password" class="form-label">{{ __('Current Password') }}</label>
+            <label for="update_password_current_password" class="form-label fw-bold">{{ __('Current Password') }}</label>
             <input id="update_password_current_password" name="current_password" type="password" class="form-control" autocomplete="current-password" />
-            <!-- You can add error handling here if needed -->
+            @error('current_password', 'updatePassword')
+                <div class="text-danger small mt-1">{{ $message }}</div>
+            @enderror
         </div>
 
+        {{-- New Password --}}
         <div class="mb-3">
-            <label for="update_password_password" class="form-label">{{ __('New Password') }}</label>
+            <label for="update_password_password" class="form-label fw-bold">{{ __('New Password') }}</label>
             <input id="update_password_password" name="password" type="password" class="form-control" autocomplete="new-password" />
-            <!-- You can add error handling here if needed -->
+            @error('password', 'updatePassword')
+                <div class="text-danger small mt-1">{{ $message }}</div>
+            @enderror
         </div>
 
+        {{-- Confirm Password --}}
         <div class="mb-3">
-            <label for="update_password_password_confirmation" class="form-label">{{ __('Confirm Password') }}</label>
+            <label for="update_password_password_confirmation" class="form-label fw-bold">{{ __('Confirm Password') }}</label>
             <input id="update_password_password_confirmation" name="password_confirmation" type="password" class="form-control" autocomplete="new-password" />
-            <!-- You can add error handling here if needed -->
+            @error('password_confirmation', 'updatePassword')
+                <div class="text-danger small mt-1">{{ $message }}</div>
+            @enderror
         </div>
 
-        <div class="d-flex align-items-center gap-4">
-            <button type="submit" class="btn btn-custom-color">{{ __('Save') }}</button>
+        <div class="d-flex align-items-center gap-3">
+            {{-- SAVE BUTTON: Updated Color to Orange --}}
+            <button type="submit" class="btn text-white" style="background-color: #E59500; border-color: #E59500;">
+                {{ __('Save') }}
+            </button>
 
             @if (session('status') === 'password-updated')
-                <p class="text-muted small">{{ __('Saved.') }}</p>
+                <p x-data="{ show: true }"
+                   x-show="show"
+                   x-transition
+                   x-init="setTimeout(() => show = false, 2000)"
+                   class="text-muted small mb-0 ms-2">
+                    {{ __('Saved.') }}
+                </p>
             @endif
         </div>
     </form>

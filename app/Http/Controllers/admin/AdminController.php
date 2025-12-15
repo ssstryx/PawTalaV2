@@ -3,21 +3,14 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
     public function index()
     {
-        // Get the logged-in admin's barangay
-        $myBarangay = auth()->user()->barangay;
-
-        // FETCH USERS: Only get users from the SAME barangay
-        $users = User::where('barangay', $myBarangay)
-                    ->where('role', 'user') // Assuming you have normal users too
-                    ->get();
-
-        return view('admin.app', compact('users'));
+        return view('admin.dashboard');
     }
 
     public function store(Request $request)

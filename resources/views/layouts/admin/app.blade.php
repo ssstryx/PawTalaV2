@@ -192,9 +192,11 @@
             <a href="{{ route('barangay.pets.index') }}" class="nav-link {{ request()->routeIs('barangay.pets.index') ? 'active' : '' }}">
                 <i class="bi bi-pencil-square"></i> <span>Registration</span>
             </a>
-
-            <a href="{{ route('barangay.veterinarians.index') }}" class="nav-link {{ request()->routeIs('barangay.veterinarians.index') ? 'active' : '' }}">
-                <i class="bi bi-heart-pulse-fill"></i> <span>Veterinarian</span>
+            
+            <a class="nav-link {{ request()->routeIs('barangay.reports.index') ? 'active' : '' }}" 
+                href="{{ route('barangay.reports.index') }}">
+                    <i class="fas fa-file-alt"></i>
+                    <span>Reports</span>
             </a>
         </div>
     </nav>
@@ -205,7 +207,7 @@
             
             <div class="dropdown">
                 <a href="#" class="d-flex align-items-center text-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown">
-                    <span class="fw-bold me-2">{{ Auth::user()->name }}</span>
+                    <span class="fw-bold me-2">{{ Auth::user()->first_name }} {{ Auth::user()->last_name }}</span>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end border-0 shadow mt-2">
                     <li><a class="dropdown-item" href="{{ route('profile.edit') }}">Profile</a></li>

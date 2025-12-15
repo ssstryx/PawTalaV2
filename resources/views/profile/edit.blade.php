@@ -1,4 +1,4 @@
-@extends(Auth::user()->role === 'super_admin' ? 'layouts.super_admin.app' : 'layouts.admin.app')
+@extends(Auth::user()->role === 'super_admin' ? 'layouts.super_admin.app' : (Auth::user()->role === 'admin' ? 'layouts.admin.app' : 'layouts.user.app'))
 
 @section('content')
 <div class="container py-5">
@@ -7,7 +7,10 @@
             <!-- Profile Information Card -->
             <div class="card shadow-sm rounded-lg mb-4">
                 <div class="card-body p-4">
-                    @include('profile.partials.update-profile-information-form')
+                    @php
+                        $profile = Auth::user()->role === 'admin' || Auth::user()->role === 'super_admin' ? Auth::user()->adminProfile : Auth::user()->userProfile;
+                    @endphp
+                    @include('profile.partials.update-profile-information-form', ['profile' => $profile])
                 </div>
             </div>
 
@@ -15,13 +18,6 @@
             <div class="card shadow-sm rounded-lg mb-4">
                 <div class="card-body p-4">
                     @include('profile.partials.update-password-form')
-                </div>
-            </div>
-
-            <!-- Delete Account Card -->
-            <div class="card shadow-sm rounded-lg">
-                <div class="card-body p-4">
-                    @include('profile.partials.delete-user-form')
                 </div>
             </div>
         </div>
